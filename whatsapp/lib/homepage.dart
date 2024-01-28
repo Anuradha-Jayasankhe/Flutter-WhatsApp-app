@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/widgets/callwidget.dart';
+import 'package:whatsapp/widgets/statuswidget.dart';
+
+import 'widgets/chatwidget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,6 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: 1,
       length: 4,
       child: Scaffold(
         appBar: PreferredSize(
@@ -20,15 +25,23 @@ class HomePage extends StatelessWidget {
               ),
             ),
             actions: [
-              const Padding(
-                padding: EdgeInsets.only(top: 12, right: 15),
-                child: Icon(
-                  Icons.search,
-                  size: 28,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.only(top: 12, right: 15),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.search,
+                    size: 28,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               PopupMenuButton(
+                onSelected: (selected) {
+                  if (selected == 5) {
+                    Navigator.pushNamed(context, "settingpage");
+                  }
+                },
                 iconColor: Colors.white,
                 elevation: 10,
                 padding: const EdgeInsets.symmetric(vertical: 20),
@@ -87,12 +100,15 @@ class HomePage extends StatelessWidget {
                 isScrollable: true,
                 indicatorColor: Colors.white,
                 labelStyle:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 tabs: [
                   const SizedBox(
                     width: 25,
                     child: Tab(
-                      icon: Icon(Icons.camera_alt),
+                      icon: Icon(
+                        Icons.camera_alt,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -100,13 +116,18 @@ class HomePage extends StatelessWidget {
                     child: Tab(
                       child: Row(
                         children: [
-                          const Text('CHATS'),
+                          const Text(
+                            'Chats',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          const SizedBox(width: 5),
                           Container(
-                            height: 20,
-                            width: 20,
+                            margin: const EdgeInsets.all(5),
+                            height: 22,
+                            width: 22,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             child: const Text(
                               '10',
@@ -118,9 +139,42 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    width: 85,
+                    child: Tab(
+                      child: Text(
+                        'STATUS',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 85,
+                    child: Tab(
+                      child: Text(
+                        'CALLS',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
+            Flexible(
+              flex: 1,
+              child: TabBarView(children: [
+                //tab1
+                Container(
+                  color: Colors.black,
+                ),
+                //tab2
+                const Chatwidget(),
+                //tab3
+                const Statuswidget(),
+                //tab4
+                const Callwidget(),
+              ]),
+            )
           ],
         ),
       ),
