@@ -98,6 +98,7 @@ class HomePage extends StatelessWidget {
               color: const Color(0xff075e55),
               child: TabBar(
                 isScrollable: true,
+                physics: const NeverScrollableScrollPhysics(),
                 indicatorColor: Colors.white,
                 labelStyle:
                     const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),

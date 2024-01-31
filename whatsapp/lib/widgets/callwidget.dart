@@ -62,7 +62,9 @@ class Callwidget extends StatelessWidget {
                     const Spacer(),
                     Container(
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'callpop');
+                          },
                           icon: const Icon(
                             Icons.call_sharp,
                             color: Color(0xFF075E55),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/callpop.dart';
 import 'package:whatsapp/chatpage.dart';
 import 'package:whatsapp/homepage.dart';
 import 'package:whatsapp/settingpage.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => const HomePage(),
         "settingpage": (context) => const Settingpage(),
         "chatpage": (context) => const Chatpage(),
+        "callpop": (context) => const Callpop(),
       },
     );
   }
