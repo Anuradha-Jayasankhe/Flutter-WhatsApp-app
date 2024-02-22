@@ -76,7 +76,9 @@ class Chatpage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 10, right: 10),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, 'callpop');
+                },
                 icon: const Icon(
                   Icons.call,
                   size: 25,

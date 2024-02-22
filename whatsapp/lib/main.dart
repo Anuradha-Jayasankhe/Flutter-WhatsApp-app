@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
         "settingpage": (context) => const Settingpage(),
         "chatpage": (context) => const Chatpage(),
         "callpop": (context) => const Callpop(),
+        "HomePage": (context) => const HomePage(),
       },
     );
   }
